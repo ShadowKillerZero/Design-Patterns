@@ -1,0 +1,128 @@
+安装git
+打开Git Bash
+
+输入
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+版本库：repository 
+创建版本库：
+$ mkdir learngit
+$ cd learngit
+$ pwd
+/Users/michael/learngit
+其中pwd显示当前目录
+
+$ git init
+Initialized empty Git repository in /Users/michael/learngit/.git/
+git init命令创建版本库
+ls-ah可以将.git隐藏目录显示
+
+$ git add file
+添加文件
+
+$ git commit -m"wrote a readme file"
+[master (root-commit) eaadf4e] wrote a readme file
+ 1 file changed, 2 insertions(+)   //有一个文件改动了，插入两行新内容
+ create mode 100644 readme.txt
+ git commit -m为提交说明
+ 可以添加多个文件然后一次提交
+ 
+ $ git status
+ 可以查看版本库的状态，查看文件被修改
+ 
+ $ git diff file
+ 可以查看当前文件更改的内容
+ 
+ 
+ $ git log
+ 可以查看从最近到最远的提交日志最近的一次是append GPL，上一次是add distributed，最早的一次是wrote a readme file
+ 
+ --pretty=oneline
+ 可以省略参数
+ 
+ $ git reset --hard HEAD^
+ HEAD代表当前版本 HEAD^代表上一个 HEAD~100前100个版本
+ 
+ $ cat file
+ 查看当前文件
+ 
+ $ git reset --hard 1094a
+ 指定回到的版本号
+ 
+ $ git reflog
+ 可以查看之前的操作与命令
+ 
+ $ git checkout -- file
+ 将文件在工作区的修改全部撤销
+ 
+ $git reset Head<file>
+ 用改命令返回上次修改
+ 
+ $ rm file
+ 删除文件
+ 
+ $git rm file 然后git commit
+ 确定删除并提交
+ 
+ $ ssh-keygen -t rsa -C "youremail@example.com"
+ 创建SSH Key
+ 
+ 在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥
+ 登陆GitHub，打开“Account settings”，“SSH Keys”页面
+ 点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容
+ 添加了ssh Key这台电脑就可以提交内容了
+ 
+ $ git remote add origin git@github.com:michaelliao/learngit.git
+ $ git remote add origin git@server-name:path/repo-name.git
+ michaelliao:gitHub账户名 关联远程库
+ 
+ $ git push -u origin master
+ 将本地库内容推送到远程库
+ 第一次使用-u 和master可以将master分支进行关联
+ 
+ $git push origin master
+ 将本地master分支推送到gitHub
+ 
+ $ git clone git@server-name:path/repo-name.git
+ 克隆一个远程库
+ GitHub给出的地址不止一个，还可以用https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议
+ 使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https。
+ 
+ 分支：
+ $ git checkout -b dev
+ 创建并切换至分支dev
+ 相当于以下两个命令
+ $ git branch dev
+ $ git checkout dev
+ 
+ $ git branch
+   查看当前分支，当前分支带*号
+ 
+ $ git checkout master
+ 切回主分支，内容和分支上提交的不一样
+ 
+ $ git merge dev
+ 将dev分支内容合并到当前分支上
+ Fast-forward快速合并模式
+ 
+ $ git branch -d dev
+ 删除分支
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
