@@ -1,4 +1,4 @@
-安装git
+﻿安装git
 打开Git Bash
 
 输入
@@ -110,7 +110,7 @@ $ git commit -m"wrote a readme file"
  删除分支
  
  
- 
+ ————————————————————
  
  
  
