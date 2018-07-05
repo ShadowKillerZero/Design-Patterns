@@ -28,3 +28,15 @@ public class FireCommand : Command
         actor.Fire();
     }
 }
+
+public class InputHandler
+{
+    public Command HandleInput()
+    {
+        return null;
+    }
+    Command buttonX_;
+    Command buttonY_;
+    Command buttonA_;
+    Command buttonB_;
+}
