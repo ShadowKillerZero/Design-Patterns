@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//xiugai
+//Dev
 public class GameActor
 {
     public void Jump() { }
