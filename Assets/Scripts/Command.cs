@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 //master
+//fixed Bug
 public class GameActor
 {
     public void Jump() { }
