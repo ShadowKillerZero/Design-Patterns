@@ -4,9 +4,26 @@ using UnityEngine;
 //Dev
 public abstract class GameActor : MonoBehaviour
 {
+    public virtual void Start()
+    {
+        Regist();
+    }
     public virtual void Jump() { }
     public virtual void Fire() { }
     public virtual void MoveForward() { }
+    public virtual void Regist()
+    {
+        if (this is Player)
+        {
+            NPCMrg.instance.player = this;
+        }
+        NPCMrg.instance.Regist(this);
+    }
+
+    public virtual void SetKeyCommand(KeyCode keyCode,Command command)
+    {
+        
+    }
 }
 
 public abstract class Command {
