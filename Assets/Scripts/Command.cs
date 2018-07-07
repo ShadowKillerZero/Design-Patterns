@@ -1,17 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 //master
 //fixed Bug
 public class GameActor
+=======
+//Dev
+public abstract class GameActor : MonoBehaviour
+>>>>>>> cbbaa340fda1c03da4ce8efc875329585485e6ab
 {
-    public void Jump() { }
-    public void Fire() { }
+    public virtual void Start()
+    {
+        Regist();
+    }
+    public virtual void Jump() { }
+    public virtual void Fire() { }
+    public virtual void MoveForward() { }
+    public virtual void Regist()
+    {
+        if (this is Player)
+        {
+            NPCMrg.instance.player = this;
+        }
+        NPCMrg.instance.Regist(this);
+    }
+
+    public virtual void SetKeyCommand(KeyCode keyCode,Command command)
+    {
+        
+    }
 }
 
 public abstract class Command {
     public abstract void Execute(GameActor actor);
     public virtual void Undo() { }
+}
+
+public class NullCommand : Command
+{
+    public override void Execute(GameActor actor) { }
 }
 
 public class JumpCommand : Command
@@ -37,17 +65,11 @@ public class Unit
     private int y;
     public int X
     {
-        get
-        {
-            return x;
-        }
+        get { return x; }
     }
     public int Y
     {
-        get
-        {
-            return y;
-        }
+        get { return y; }
     }
 
     public void MoveTo(int x,int y)
@@ -82,14 +104,52 @@ public class MoveUnitCommand : Command
     private Unit unit;
 }
 
-public class InputHandler
+public abstract class InputHandler
 {
-    public Command HandleInput()
+    public abstract Command HandleInput();
+}
+
+public class KeyboardInputHandler : InputHandler
+{
+    Command keyA;
+    Command keyS;
+    Command keyW;
+    Command keyD;
+    NullCommand nullCommand;
+    public KeyboardInputHandler()
     {
+        keyA = nullCommand;
+        keyS = nullCommand;
+        keyW = nullCommand;
+        keyD = nullCommand;
+    }
+    public Command KeyD
+    {
+        set { keyD = value; }
+    }
+
+    public Command KeyA
+    {
+        set { keyA = value; }
+    }
+
+    public Command KeyS
+    {
+        set { keyS = value; }
+    }
+
+    public Command KeyW
+    {
+
+        set { keyW = value; }
+    }
+
+    public override Command HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.A)) return keyA;
+        if (Input.GetKeyDown(KeyCode.S)) return keyS;
+        if (Input.GetKeyDown(KeyCode.D)) return keyD;
+        if (Input.GetKeyDown(KeyCode.W)) return keyW;
         return null;
     }
-    Command buttonX_;
-    Command buttonY_;
-    Command buttonA_;
-    Command buttonB_;
 }
