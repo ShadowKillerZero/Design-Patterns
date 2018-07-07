@@ -1,14 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
-//master
-//fixed Bug
-public class GameActor
-=======
-//Dev
+
 public abstract class GameActor : MonoBehaviour
->>>>>>> cbbaa340fda1c03da4ce8efc875329585485e6ab
 {
     public virtual void Start()
     {
